@@ -24,5 +24,19 @@ void ATankPlayerController::BeginPlay()
 	}
 }
 
+// Called every frame
+void ATankPlayerController::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	AimTowardsCrosshair();
+}
 
+void ATankPlayerController::AimTowardsCrosshair()
+{
+	if (!GetControlledTank()) { return; }
+
+	// get world location through crosshair
+	// if it hits the landscape
+		// tell controlled tank to aim at this point
+}
 
