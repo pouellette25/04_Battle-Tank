@@ -26,4 +26,5 @@ private:
 	virtual void Tick(float DeltaSeconds) override;
 	void AimTowardsCrosshair();
 	bool GetSightRayHitLocation(FVector &HitLocation) const;
+	bool GetLookDirection(FVector2D ScreenLocation, FVector &LookDirection) const;
 };
