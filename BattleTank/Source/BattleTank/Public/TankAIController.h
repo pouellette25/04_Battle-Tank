@@ -20,5 +20,9 @@ private:
 	ATank* GetControlledTank() const;
 
 	ATank* GetPlayerTank() const;
+	ATank* PlayerTank;
+
+	virtual void Tick(float DeltaSeconds) override;
+	void AimTowardsPlayer();
 	
 };

@@ -35,7 +35,7 @@ void ATankAIController::BeginPlay()
 		UE_LOG(LogTemp, Error, TEXT("No AI Controlled Tank"));
 	}
 
-	ATank* PlayerTank = GetPlayerTank();
+	PlayerTank = GetPlayerTank();
 
 	if (PlayerTank)
 	{
@@ -47,4 +47,18 @@ void ATankAIController::BeginPlay()
 	}
 }
 
+void ATankAIController::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+
+	if (PlayerTank)
+	{
+		AimTowardsPlayer();
+	}	
+}
+
+void ATankAIController::AimTowardsPlayer()
+{
+	GetControlledTank()->AimAt(PlayerTank->GetActorLocation());
+}
 
