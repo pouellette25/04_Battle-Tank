@@ -4,8 +4,8 @@
 #include "TankBarrel.h"
 
 
-void UTankBarrel::Elevate(float DegreesPerSecond)
+void UTankBarrel::Elevate(float MaxElevation)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Barrel-Elevate Called() %f"), DegreesPerSecond);
+	UE_LOG(LogTemp, Warning, TEXT("Barrel-Elevate Called() %f"), MaxElevation);
 }
 

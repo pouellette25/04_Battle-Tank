@@ -40,8 +40,6 @@ void ATankPlayerController::AimTowardsCrosshair()
 	if (GetSightRayHitLocation(HitLocation))
 	{
 		GetControlledTank()->AimAt(HitLocation);
-
-		// TODO tell controlled tank to aim at this point
 	}
 }
 
