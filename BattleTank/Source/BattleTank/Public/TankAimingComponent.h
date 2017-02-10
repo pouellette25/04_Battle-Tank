@@ -5,7 +5,8 @@
 #include "Components/ActorComponent.h"
 #include "TankAimingComponent.generated.h"
 
-class UTankBarrel; // Forward Decleration to pull in the tank barrel class
+// Forward Decleration to pull in the tank barrel class
+class UTankBarrel; 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BATTLETANK_API UTankAimingComponent : public UActorComponent
