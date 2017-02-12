@@ -30,7 +30,6 @@ void ATank::BeginPlay()
 	Super::BeginPlay();
 }
 
-
 // Called to bind functionality to input
 void ATank::SetupPlayerInputComponent(class UInputComponent* InputComponentIn)
 {
@@ -41,5 +40,11 @@ void ATank::SetupPlayerInputComponent(class UInputComponent* InputComponentIn)
 void ATank::AimAt(FVector Location)
 {
 	TankAimingComponent->AimAt(Location, LaunchSpeed);
+}
+
+void ATank::Fire()
+{
+	auto Time = GetWorld()->GetTimeSeconds();
+	UE_LOG(LogTemp, Warning, TEXT("%f: PlayerTank firing"), Time);
 }
 
