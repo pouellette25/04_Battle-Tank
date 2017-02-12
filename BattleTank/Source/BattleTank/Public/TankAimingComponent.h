@@ -7,6 +7,7 @@
 
 // Forward Decleration to pull in the tank barrel class
 class UTankBarrel; 
+class UTankTurret;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BATTLETANK_API UTankAimingComponent : public UActorComponent
@@ -18,12 +19,14 @@ public:
 	UTankAimingComponent();
 
 	void SetBarrelReference(UTankBarrel* Barrel);
-	// TODO add set barrel reference
+	void SetTurretReference(UTankTurret* Turret);
 
 	void AimAt(FVector Location, float LaunchSpeed);
 
 private:
 	UTankBarrel* Barrel = nullptr;
+	UTankTurret* Turret = nullptr;
 	
 	void MoveBarrel(FVector AimDirection);
+	void MoveTurret(FVector AimDirection);
 };
