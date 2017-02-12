@@ -3,7 +3,7 @@
 #include "BattleTank.h"
 #include "TankTurret.h"
 
-void UTankTurret::RotateTurret(float RelativeSpeed)
+void UTankTurret::Rotate(float RelativeSpeed)
 {
 	RelativeSpeed = FMath::Clamp(RelativeSpeed, -1.0f, 1.0f);
 
