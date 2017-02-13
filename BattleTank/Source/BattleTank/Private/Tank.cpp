@@ -49,10 +49,10 @@ void ATank::Fire()
 {
 	if (!Barrel) { return; }
 
-	auto Time = GetWorld()->GetTimeSeconds();
-	UE_LOG(LogTemp, Warning, TEXT("%f: PlayerTank firing"), Time);
 	auto SocketLocation = Barrel->GetSocketLocation(FName("Projectile"));
 	auto SocketRotation = Barrel->GetSocketRotation(FName("Projectile"));
-	GetWorld()->SpawnActor<AProjectile>(ProjectileBlueprint, SocketLocation, SocketRotation);
+
+	auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileBlueprint, SocketLocation, SocketRotation);
+	Projectile->LaunchProjectile(LaunchSpeed);
 }
 
