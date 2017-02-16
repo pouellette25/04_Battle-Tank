@@ -32,9 +32,6 @@ public:
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
-	UPROPERTY(BlueprintReadOnly, meta = (DisplayName = "Movement Component"))
-		UTankMovementComponent* TankMovementComponent = nullptr;
-
 private:
 	// Sets default values for this pawn's properties
 	ATank();
