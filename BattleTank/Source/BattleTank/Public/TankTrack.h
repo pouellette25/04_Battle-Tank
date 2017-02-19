@@ -1,4 +1,4 @@
-// Copyright LP Creative Ventures LLC.Project Settings.
+// Copyright LP Creative Ventures LLC.
 
 #pragma once
 
@@ -15,10 +15,10 @@ class BATTLETANK_API UTankTrack : public UStaticMeshComponent
 	
 public:
 
-	UFUNCTION(BlueprintCallable, Category = Input)
+	UFUNCTION(BlueprintCallable, Category = "Input")
 	void SetThrottle(float Throttle);
 
 	// Max force per track, in Newtons
-	UPROPERTY(EditDefaultsOnly, Category = Setup)
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		float TrackMaxDrivingForce = 400000; // assume 40 ton tank, and 1g acceleration
 };

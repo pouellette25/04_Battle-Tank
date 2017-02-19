@@ -1,4 +1,4 @@
-// Copyright LP Creative Ventures LLC.Project Settings.
+// Copyright LP Creative Ventures LLC.
 
 using UnrealBuildTool;
 using System.Collections.Generic;

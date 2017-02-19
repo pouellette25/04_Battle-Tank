@@ -1,4 +1,4 @@
-// Copyright LP Creative Ventures LLC.Project Settings.
+// Copyright LP Creative Ventures LLC.
 
 #include "BattleTank.h"
 #include "TankTrack.h"

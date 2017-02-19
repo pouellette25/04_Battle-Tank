@@ -1,4 +1,4 @@
-// Copyright LP Creative Ventures LLC.Project Settings.
+// Copyright LP Creative Ventures LLC.
 
 #pragma once
 
@@ -27,8 +27,8 @@ public:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
 
-	void SetBarrelReference(UTankBarrel* Barrel);
-	void SetTurretReference(UTankTurret* Turret);
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+		void Initialize(UTankBarrel* BarrelIn, UTankTurret* TurretIn);
 
 	void AimAt(FVector Location, float LaunchSpeed);
 
@@ -41,7 +41,5 @@ private:
 	UTankTurret* Turret = nullptr;
 
 	void MoveBarrel(FVector AimDirection);
-	void MoveTurret(FVector AimDirection);
-
-	
+	void MoveTurret(FVector AimDirection);	
 };

@@ -1,4 +1,4 @@
-// Copyright LP Creative Ventures LLC.Project Settings.
+// Copyright LP Creative Ventures LLC.
 
 #include "BattleTank.h"
 #include "TankBarrel.h"
@@ -16,17 +16,11 @@ UTankAimingComponent::UTankAimingComponent()
 	// ...
 }
 
-void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
+void UTankAimingComponent::Initialize(UTankBarrel* BarrelIn, UTankTurret* TurretIn)
 {
-	if (!BarrelToSet) { return; }
-	Barrel = BarrelToSet;
+	Barrel = BarrelIn;
+	Turret = TurretIn;
 }
-void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
-{
-	if (!TurretToSet) { return; }
-	Turret = TurretToSet;
-}
-
 
 void UTankAimingComponent::AimAt(FVector Location, float LaunchSpeed)
 {
@@ -58,6 +52,7 @@ void UTankAimingComponent::AimAt(FVector Location, float LaunchSpeed)
 
 void UTankAimingComponent::MoveBarrel(FVector AimDirection)
 {
+	if (!Barrel) { return; }
 	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
