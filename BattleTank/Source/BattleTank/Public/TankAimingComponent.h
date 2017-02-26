@@ -18,6 +18,9 @@ enum class EFiringState : uint8
 class UTankBarrel; 
 class UTankTurret;
 
+/*
+* Responsible for helping the player and ai tanks aim
+*/
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BATTLETANK_API UTankAimingComponent : public UActorComponent
 {
