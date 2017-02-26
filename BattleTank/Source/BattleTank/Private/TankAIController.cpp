@@ -13,6 +13,7 @@ void ATankAIController::BeginPlay()
 void ATankAIController::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
+	AimTowardsPlayer();
 }
 
 void ATankAIController::AimTowardsPlayer()
@@ -27,6 +28,6 @@ void ATankAIController::AimTowardsPlayer()
 
 	MoveToActor(PlayerTank, AcceptanceRadius);
 	AimingComponent->AimAt(PlayerTank->GetActorLocation());
-	//Tank->Fire();
+	AimingComponent->Fire();
 }
 
