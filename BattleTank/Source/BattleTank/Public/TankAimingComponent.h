@@ -33,7 +33,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 		void Initialize(UTankBarrel* BarrelIn, UTankTurret* TurretIn);
 
-	void AimAt(FVector Location, float LaunchSpeed);
+	void AimAt(FVector Location);
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
@@ -42,6 +42,9 @@ protected:
 private:
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+		float LaunchSpeed = 4000;
 
 	void MoveBarrelAndTurret(FVector AimDirection);
 };

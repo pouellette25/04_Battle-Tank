@@ -7,6 +7,7 @@
 
 // Forward declarations
 class ATank;
+class UTankAimingComponent;
 /**
  * 
  */
@@ -17,8 +18,6 @@ class BATTLETANK_API ATankAIController : public AAIController
 	
 private:
 	virtual void BeginPlay() override;
-	ATank* Tank;
-	ATank* PlayerTank;
 
 	virtual void Tick(float DeltaSeconds) override;
 	void AimTowardsPlayer();
