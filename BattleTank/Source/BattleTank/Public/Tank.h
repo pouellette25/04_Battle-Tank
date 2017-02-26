@@ -8,7 +8,6 @@
 // Forward declarations
 class UTankAimingComponent;
 class UTankBarrel;
-class UTankTurret;
 class AProjectile;
 
 UCLASS()
@@ -36,6 +35,7 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		TSubclassOf<AProjectile> ProjectileBlueprint;
 
+	// TODO: remove once firing is moved to aiming component
 	// The launch speed of the projectile
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 		float LaunchSpeed = 4000; 
