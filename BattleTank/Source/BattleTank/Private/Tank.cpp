@@ -23,14 +23,15 @@ void ATank::BeginPlay()
 
 void ATank::AimAt(FVector Location)
 {
-	if (!TankAimingComponent) { return; }
+	if (!ensure(TankAimingComponent)) { return; }
 	TankAimingComponent->AimAt(Location, LaunchSpeed);
 }
 
 void ATank::Fire()
 {
+	if (!ensure(Barrel)) { return; }
 	bool bIsReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
-	if (Barrel && bIsReloaded)
+	if (bIsReloaded)
 	{
 		auto SocketLocation = Barrel->GetSocketLocation(FName("Projectile"));
 		auto SocketRotation = Barrel->GetSocketRotation(FName("Projectile"));
