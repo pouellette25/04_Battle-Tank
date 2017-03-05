@@ -38,6 +38,7 @@ public:
 		void Fire();
 
 	void AimAt(FVector Location);
+	EFiringState GetFiringState() const;
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
