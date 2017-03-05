@@ -8,6 +8,11 @@ UTankTrack::UTankTrack()
 	PrimaryComponentTick.bCanEverTick = true;
 }
 
+void UTankTrack::BeginPlay()
+{
+	OnComponentHit.AddDynamic(this, &UTankTrack::OnHit);
+}
+
 void UTankTrack::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
 {
 	auto SlippageSpeed = FVector::DotProduct(GetComponentVelocity(), GetRightVector());
@@ -20,6 +25,11 @@ void UTankTrack::TickComponent(float DeltaTime, enum ELevelTick TickType, FActor
 	auto CorrectionForce = (TankRoot->GetMass() * CorrectionAcceleration) / 2; 
 
 	TankRoot->AddForce(CorrectionForce);
+}
+
+void UTankTrack::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+{
+	LOG_WARN(TEXT("Wut?"));
 }
 
 void UTankTrack::SetThrottle(float Throttle)
