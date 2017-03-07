@@ -11,7 +11,8 @@ enum class EFiringState : uint8
 {
 	Reloading,
 	Aiming,
-	Locked
+	Locked,
+	OutOfAmmo
 };
 
 // Forward Decleration to pull in the tank barrel class
@@ -37,6 +38,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Firing")
 		void Fire();
 
+	UFUNCTION(BlueprintCallable, Category = "Firing")
+		int GetCurrentAmmo() const;
+
 	void AimAt(FVector Location);
 	EFiringState GetFiringState() const;
 
@@ -57,13 +61,17 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 		float LaunchSpeed = 4000;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-		TSubclassOf<AProjectile> ProjectileBlueprint;
-
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 		float ReloadTimeInSeconds = 3;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+		int MaxAmmo = 3;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+		TSubclassOf<AProjectile> ProjectileBlueprint;
 
 	
 	FVector AimDirection;
 	double LastFireTime = 0;
+	int CurrentAmmo;
 };

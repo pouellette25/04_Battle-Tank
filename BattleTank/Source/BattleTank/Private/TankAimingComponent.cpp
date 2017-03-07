@@ -7,6 +7,7 @@
 #include "TankAimingComponent.h"
 
 EFiringState UTankAimingComponent::GetFiringState() const { return FiringState; }
+int UTankAimingComponent::GetCurrentAmmo() const { return CurrentAmmo; }
 
 // Sets default values for this component's properties
 UTankAimingComponent::UTankAimingComponent()
@@ -14,7 +15,7 @@ UTankAimingComponent::UTankAimingComponent()
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
-
+	CurrentAmmo = MaxAmmo;
 	// ...
 }
 
@@ -25,7 +26,11 @@ void UTankAimingComponent::BeginPlay()
 
 void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
 {
-	if ((GetWorld()->GetTimeSeconds() - LastFireTime) < ReloadTimeInSeconds)
+	if (CurrentAmmo <= 0)
+	{
+		FiringState = EFiringState::OutOfAmmo;
+	}
+	else if ((GetWorld()->GetTimeSeconds() - LastFireTime) < ReloadTimeInSeconds)
 	{
 		FiringState = EFiringState::Reloading;
 	}
@@ -93,7 +98,7 @@ void UTankAimingComponent::MoveBarrelAndTurret()
 
 void UTankAimingComponent::Fire()
 {	
-	if (FiringState != EFiringState::Reloading)
+	if (FiringState == EFiringState::Locked || FiringState == EFiringState::Aiming)
 	{
 		if (!ensure(Barrel)) { return; }
 		if (!ensure(ProjectileBlueprint)) { return; }
@@ -104,6 +109,8 @@ void UTankAimingComponent::Fire()
 		auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileBlueprint, SocketLocation, SocketRotation);
 		Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = GetWorld()->GetTimeSeconds();
+
+		CurrentAmmo--;
 	}
 }
 
